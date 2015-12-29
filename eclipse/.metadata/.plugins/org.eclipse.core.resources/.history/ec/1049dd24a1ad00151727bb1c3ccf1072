@@ -1,0 +1,90 @@
+package com.wuppy.samsmod;
+
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.common.DungeonHooks;
+
+@Mod(modid = SamsMod.MODID, version = SamsMod.VERSION)
+public class SamsMod {
+	
+	public static final String MODID = "wuppy29_samsmod";
+	public static final String VERSION = "1.0";
+	public static Item greyKey;
+	public static Item redKey;
+	
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		greyKey = new ItemKey("greyKey");
+		redKey = new ItemKey("redKey");
+		
+		GameRegistry.registerItem(greyKey, "greyKey");
+		GameRegistry.registerItem(redKey, "redKey");
+	}
+	
+	@EventHandler
+	public void init(FMLInitializationEvent event)
+	{
+		//Recipes
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.grass), Blocks.dirt, Blocks.vine
+				);
+		GameRegistry.addSmelting(Items.flint, new ItemStack(Blocks.gravel, 1, 1), 50F);
+		GameRegistry.addRecipe(new ItemStack(Items.apple),
+				"XXX",
+				"XXX",
+				"XXX",
+				'X', Blocks.leaves
+		);
+		GameRegistry.addRecipe(new ItemStack(Items.arrow),
+				"YZ",
+				"X ",
+				'X' , Items.flint,'Y',Items.stick,'Z',Blocks.leaves
+				);
+		GameRegistry.addRecipe(new ItemStack(Items.dye, 2, 1),
+				"XY",
+				'X', Items.redstone, 'Y', new ItemStack(Items.dye, 1, 1)
+				);
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye, 2, 1), Items.redstone, new ItemStack(Items.dye, 1, 1)
+				);
+		GameRegistry.addSmelting(Blocks.stone,  new ItemStack(Blocks.stonebrick), 0.1F
+				);
+		ItemStack enchantedSwordItemStack = new ItemStack(Items.stone_sword);
+		enchantedSwordItemStack.addEnchantment(Enchantment.sharpness, 1);
+		
+		GameRegistry.addShapelessRecipe(enchantedSwordItemStack, 
+					Items.flint, Items.stone_sword
+				);
+		
+		ItemStack enchantedSword2ItemStack = new ItemStack(Items.diamond_sword);
+		enchantedSword2ItemStack.addEnchantment(Enchantment.knockback, 1);
+		
+		GameRegistry.addShapelessRecipe(enchantedSword2ItemStack, Items.gunpowder, Items.diamond_sword
+		);
+		
+		//Dungeon changes
+		DungeonHooks.removeDungeonMob("Spider");
+		DungeonHooks.addDungeonMob("Creeper", 100);
+		
+		ChestGenHooks.removeItem(ChestGenHooks.DUNGEON_CHEST, new ItemStack(Items.saddle));
+		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new
+				ItemStack(Blocks.cobblestone), 25, 50, 10));
+		DungeonHooks.addDungeonMob("Enderman", 100);
+		ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST, new WeightedRandomChestContent(new ItemStack(Blocks.diamond_block), 5, 10 ,10));
+		
+		
+	}
+}
+
+
+
+

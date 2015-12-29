@@ -1,0 +1,15 @@
+package com.wuppy.samsmod;
+
+import net.minecraft.item.ItemFood;
+
+public class ItemBerry extends ItemFood
+{
+	private String[] name = {"Berry"};
+	
+	public ItemBerry(int food, float saturation, boolean wolfFood, String name)
+	{
+		super(food, saturation, wolfFood);
+		setUnlocalizedName(SamsMod.MODID + "_" + name);
+		setTextureName(SamsMod.MODID + ":" + name);
+	}
+}

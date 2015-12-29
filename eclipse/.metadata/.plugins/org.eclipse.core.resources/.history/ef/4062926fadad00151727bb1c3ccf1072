@@ -1,0 +1,20 @@
+package com.wuppy.samsmod;
+
+import net.minecraft.item.ItemFood;
+import net.minecraft.potion.Potion;
+
+public class ItemBerry extends ItemFood
+{
+	private String[] name = {"Berry"};
+	
+	public ItemBerry(int food, float saturation, boolean wolfFood, String name)
+	{
+		super(food, saturation, wolfFood);
+		setUnlocalizedName(SamsMod.MODID + "_" + name);
+		setTextureName(SamsMod.MODID + ":" + name);
+		setPotionEffect(Potion.jump.id, 15, 0, 1F);
+		setPotionEffect(Potion.moveSpeed.id, 15, 0, 1F);
+	}
+	
+	
+}
