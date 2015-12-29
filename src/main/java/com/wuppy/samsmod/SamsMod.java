@@ -5,6 +5,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -48,9 +49,16 @@ public class SamsMod {
 	public static Item samboots;
 	ArmorMaterial samarmor = EnumHelper.addArmorMaterial("samarmor", 20, new int[] { 3, 8,6,3}, 10);
 	
+	//Blocks
+	public static Block samStone;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		//Blocks
+		samStone = new BlockSamStone();
+		GameRegistry.registerBlock(samStone,ItemSamStone.class, "SamStone");
+		
 		//Armor
 		samhelmet = new ItemSamArmor(samarmor,0, "samhelmet");
 		samchest = new ItemSamArmor(samarmor,1, "samchest");

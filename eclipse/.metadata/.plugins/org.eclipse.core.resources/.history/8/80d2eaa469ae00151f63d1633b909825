@@ -1,0 +1,43 @@
+package com.wuppy.samsmod;
+
+import java.util.List;
+import java.util.Random;
+
+import cpw.mods.fml.relauncher.Side;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+
+public class BlockSamStone extends Block
+{
+	String name = "samstone";
+	public BlockSamStone()
+	{
+		super(Material.rock);
+		setBlockName(SamsMod.MODID + "_" + name);
+		setCreativeTab(CreativeTabs.tabBlock);
+		setHardness(2.0F);
+		setResistance(5F);
+		setStepSound(Block.soundTypeStone);
+		setHarvestLevel("pickaxe", 2);
+	}
+	
+	public getItemDropped(int meta, Random rand, int fortune)
+	{
+		return SamsMod.samdust;
+	}
+	
+	@SuppressWarnings({"unchecked", "rawtypes")
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List<E> par3List)
+	{
+		for(int var4 = 0; var4 < 2; ++var4)
+		{
+			par3List.add(new ItemStack(par1, 1, var4));
+		}
+	}
+	}
+	
+
+}

@@ -15,3 +15,7 @@ item.wuppy29_samsmod_samhelmet.name= Sam's Helmet
 item.wuppy29_samsmod_samchest.name= Sam's Chest
 item.wuppy29_samsmod_samleggings.name= Sam's Leggings
 item.wuppy29_samsmod_samboots.name= Sam's Boots
+
+tile.wuppy29_samsmod_samstone.ore.name=Sam's Stone
+tile.wuppy29_samsmod_samstone.wall.name=Sam's Wall
+tile.wuppy29_samsmod_samstone.smooth.name=Sam's Smooth Stone

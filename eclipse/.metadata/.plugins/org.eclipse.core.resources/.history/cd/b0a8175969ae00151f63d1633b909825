@@ -1,0 +1,25 @@
+package com.wuppy.samsmod;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+
+public class BlockSamStone extends Block
+{
+	String name = "samstone";
+	public BlockSamStone()
+	{
+		super(Material.rock);
+		setBlockName(SamsMod.MODID + "_" + name);
+		setBlockTextureName(SamsMod.MODID + ":" + name);
+		setCreativeTab(CreativeTabs.tabBlock);
+		setHardness(2.0F);
+		setResistance(5F);
+		setStepSound(Block.soundTypeStone);
+		setHarvestLevel("pickaxe", 2);
+		
+	}
+	
+	
+
+}
