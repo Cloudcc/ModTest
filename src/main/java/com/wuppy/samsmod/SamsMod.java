@@ -10,6 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
@@ -31,6 +32,7 @@ public class SamsMod {
 	public static Item berry;
 	
 	//Tools
+	public static Item samspax;
 	public static Item sampaxe1;
 	public static Item sampickaxe;
 	public static Item samhoe;
@@ -39,16 +41,37 @@ public class SamsMod {
 	public static Item samshovel;
 	ToolMaterial samium = EnumHelper.addToolMaterial("samium", 3, 1000, 9.5F, 3.5F, 10);
 	
+	//Armor
+	public static Item samchest;
+	public static Item samhelmet;
+	public static Item samleggings;
+	public static Item samboots;
+	ArmorMaterial samarmor = EnumHelper.addArmorMaterial("samarmor", 20, new int[] { 3, 8,6,3}, 10);
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		//Armor
+		samhelmet = new ItemSamArmor(samarmor,0, "samhelmet");
+		samchest = new ItemSamArmor(samarmor,1, "samchest");
+		samleggings = new ItemSamArmor(samarmor,2, "samleggings");
+		samboots = new ItemSamArmor(samarmor,3, "samboots");
+		
+		GameRegistry.registerItem(samchest, "SamsChest");
+		GameRegistry.registerItem(samhelmet, "SamsHelmet");
+		GameRegistry.registerItem(samleggings, "Samsleggings");
+		GameRegistry.registerItem(samboots, "SamsBoots");
+		
+		
 		//Tools
+		samspax = new ItemSamSpax(samium, "samspax");
 		sampaxe1 = new ItemSamPaxe1(samium, "sampaxe1");
 		samaxe = new ItemSamAxe(samium, "samaxe");
 		samhoe = new ItemSamHoe(samium, "samhoe");
 		samsword = new ItemSamSword(samium, "samsword");
 		samshovel = new ItemSamShovel(samium, "samsword");
 		sampickaxe = new ItemSamPickaxe(samium, "sampickaxe");
+		GameRegistry.registerItem(samspax, "Sam's Spax");
 		GameRegistry.registerItem(sampaxe1, "Sam's Paxe1");
 		GameRegistry.registerItem(samaxe, "Sam's Axe");
 		GameRegistry.registerItem(samsword, "Sam's Sword");

@@ -1,0 +1,14 @@
+package com.wuppy.samsmod;
+
+import net.minecraft.item.ItemArmor;
+
+public class ItemSamArmor extends ItemArmor
+{
+	public ItemSamArmor(ArmorMaterial material, int armorType, String name)
+	{
+		super(material, 0, armorType);
+		setUnlocalizedName(SamsMod.MODID + "_" + name);
+		setTextureName(SamsMod.MODID + ":" + name);
+	}
+
+}
