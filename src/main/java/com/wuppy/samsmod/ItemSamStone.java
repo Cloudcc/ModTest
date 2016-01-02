@@ -25,9 +25,7 @@ public class ItemSamStone extends ItemBlock
 		case 1:
 			name = "wall";
 			break;
-		case 2:
-			name = "smooth";
-			break;
+
 		default:
 			System.out.println("Invalid metadata for Block SamStone");
 			name = "broken";

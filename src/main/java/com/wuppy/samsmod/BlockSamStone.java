@@ -12,6 +12,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class BlockSamStone extends Block
 {	
@@ -29,6 +31,14 @@ public class BlockSamStone extends Block
 		setResistance(5F);
 		setStepSound(Block.soundTypeStone);
 		setHarvestLevel("pickaxe", 2);
+		
+	
+	}
+	
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
 	}
 	
 	public Item getItemDropped(int meta, Random rand, int fortune)
@@ -53,7 +63,21 @@ public class BlockSamStone extends Block
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int par1, int par2)
 	{
-		return icons[par2];
+		switch(par2)
+		{
+		case 0:
+		return icons[0];
+		case 1:
+			if(ForgeDirection.getOrientation(par1) == ForgeDirection.UP ||
+			ForgeDirection.getOrientation(par1) == ForgeDirection.DOWN)
+				return icons[2];
+			else
+				return icons[1];
+
+		default:
+			System.out.println("Problems with getting the icon for BlackSamStone");
+			return null;
+		}
 	}
 	
 	@SuppressWarnings({"unchecked", "rawtypes"})
@@ -61,9 +85,16 @@ public class BlockSamStone extends Block
 	@Override
 	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List)
 	{
-		for(int var4 = 0; var4 < 3; ++var4)
+		for(int var4 = 0; var4 < 2; ++var4)
 		{
 			par3List.add(new ItemStack(par1, 1, var4));
+		}
+	}
+	public void setBlockBoundsBasedOnState(IBlockAccess world,int x, int y, int z)
+	{
+		if(world.getBlockMetadata(x, y, z) == 1)
+		{
+			setBlockBounds(0F, 0F, 0F, 1F, 0.5F, 1F);
 		}
 	}
 }

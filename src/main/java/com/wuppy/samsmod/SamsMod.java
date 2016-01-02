@@ -52,9 +52,28 @@ public class SamsMod {
 	//Blocks
 	public static Block samStone;
 	
+	//plants
+	public static Block samPlant;
+	public static Item samseed;
+	
+	//TileEntity
+	public static Block samTE;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
+		//TileEntity
+		samTE = new BlockSamTE();
+		GameRegistry.registerBlock(samTE, "SamTE");
+		
+		
+		//plants
+		samseed = new ItemSamSeed(samPlant);
+		GameRegistry.registerItem(samseed, "SamSeed");
+		samPlant  =  new BlockSamPlant();
+		GameRegistry.registerBlock(samPlant, "SamPlant");
+		
+		
 		//Blocks
 		samStone = new BlockSamStone();
 		GameRegistry.registerBlock(samStone,ItemSamStone.class, "SamStone");
