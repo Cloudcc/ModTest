@@ -20,5 +20,6 @@ item.wuppy29_samsmod_samseed.name=Sam's Seed
 tile.wuppy29_samsmod_samstone.ore.name=Sam's Stone
 tile.wuppy29_samsmod_samstone.wall.name=Sam's Wall
 tile.wuppy29_samsmod_samplant.name=Sam's Plant
+tile.wuppy29_samsmod_samte.name=Sam's TileEntity
 
 

@@ -29,4 +29,6 @@
 <fullyQualifiedTypeName name="net.minecraft.creativetab.CreativeTabs"/>
 <fullyQualifiedTypeName name="cpw.mods.fml.relauncher.Side"/>
 <fullyQualifiedTypeName name="net.minecraft.client.renderer.texture.IIconRegister"/>
+<fullyQualifiedTypeName name="net.minecraft.network.play.server.S35PacketUpdateTileEntity"/>
+<fullyQualifiedTypeName name="net.minecraft.network.Packet"/>
 </qualifiedTypeNameHistroy>

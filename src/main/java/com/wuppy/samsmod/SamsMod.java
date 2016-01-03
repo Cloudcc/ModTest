@@ -65,7 +65,7 @@ public class SamsMod {
 		//TileEntity
 		samTE = new BlockSamTE();
 		GameRegistry.registerBlock(samTE, "SamTE");
-		
+		GameRegistry.registerTileEntity(TileEntitySam.class, "TE_samTE");
 		
 		//plants
 		samseed = new ItemSamSeed(samPlant);
